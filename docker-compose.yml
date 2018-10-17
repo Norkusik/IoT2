@@ -9,7 +9,11 @@ services:
       - 8090:8090
 
   db:
-    image: mysql:5.7.13 
+    build:
+      context: ./
+      dockerfile: Dockerfile-mysql
+    ports:
+      - 25432:5432
     volumes:
      - /var/lib/mysql
     environment:
@@ -19,9 +23,11 @@ services:
       MYSQL_PASSWORD: password
 
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin
+    build:
+      context: ./
+      dockerfile: Dockerfile-phpmyadmin
     ports:
-     - 8080:8080
+     - 8080:80
     environment:
       MYSQL_USERNAME: root
       MYSQL_ROOT_PASSWORD: password

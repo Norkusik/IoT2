@@ -1,2 +1,2 @@
 # Pull base image.
-FROM postgres:9.4
+FROM mysql:5.7.13
